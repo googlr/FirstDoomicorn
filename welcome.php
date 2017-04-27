@@ -25,11 +25,11 @@ $keyword = $_POST["keyword"];
 $sql_name_validate = "select * from CUSTOMER where cname = '$usrname';";
 $result_name_validate = mysql_query($sql_name_validate, $con);
 if( mysql_num_rows( $result_name_validate ) < 1){
-        require("signUp.php");
+	require("signUp.php");
 }
 else{
-        if($keyword == ""){$sql = "select * from PRODUCT";}
-        else{$sql = "select * from PRODUCT where pdescription LIKE '%$keyword%'";}
+	if($keyword == ""){$sql = "select * from PRODUCT";}
+	else{$sql = "select * from PRODUCT where pdescription LIKE '%$keyword%'";}
 
 $result = mysql_query($sql, $con);
 if( mysql_num_rows($result) < 1){
@@ -42,7 +42,7 @@ $temp = $row['pname'];
 $html = <<<HTML
 <form method = "post" action = "newPurchase.php">
 <input type = "hidden" name = "productName" value = "'$temp'" /><br />
-<input type = "submit" value = "Purchase"/><br />   
+<input type = "submit" value = "Purchase"/><br />
 </form>
 HTML;
   echo $row['pname'] .$html;
@@ -58,4 +58,3 @@ mysql_close($con);
 
 </body>
 </html>
-                                   
